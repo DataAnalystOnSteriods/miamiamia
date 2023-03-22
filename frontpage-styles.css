@@ -1,0 +1,38 @@
+  body{
+    background-image: url('l.gif');
+    background-size: cover;
+    
+    
+    
+    height: 100vh;
+    padding:0;
+    margin:0;
+  }
+
+  .header {
+    text-align: center;;
+    color: #66446Dg;
+    height: 140px;
+    width: 980px;
+    margin: 15px;
+    left: 430px;
+    top: 0px;
+    position:absolute;
+  }
+
+
+  .content {
+    text-align: center;
+    height: 450px;
+    width: 690px;
+    margin: 15px;
+    left: 550px;
+    top: 165px;
+    position:absolute;
+  }
+
+
+
+
+
+  
