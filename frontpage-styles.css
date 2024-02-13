@@ -1,35 +1,41 @@
-  body{
-    background-image: url('l.gif');
-    background-size: cover;
-    
-    
-    
-    height: 100vh;
-    padding:0;
-    margin:0;
-  }
+@import url('https://fonts.googleapis.com/css2?family=Niconne&display=swap');
 
-  .header {
-    text-align: center;;
-    color: #66446Dg;
-    height: 140px;
-    width: 980px;
-    margin: 15px;
-    left: 430px;
-    top: 0px;
-    position:absolute;
-  }
+body {
+  background-size: cover;
+  background-attachment: fixed; /* This keeps the background fixed while scrolling */
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+}
 
 
-  .content {
-    text-align: center;
-    height: 450px;
-    width: 690px;
-    margin: 15px;
-    left: 550px;
-    top: 165px;
-    position:absolute;
-  }
+header h1 {
+  font-size: 90px;
+  font-weight: 600;
+  font-family: 'Niconne', cursive;
+  color: #e0d6e9;
+  text-shadow: 2px 2px 0px  #957dad,
+               4px 4px 0px #ee4b2b,
+               6px 6px 0px #00c2cb,
+               8px 8px 0px #ff7f50,
+               10px 10px 0px #553c9a;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+
+.content {
+  text-align: center;
+  height: 0px;
+  width: 690px;
+  margin: 15px;
+  left: 550px;
+  top: 165px;
+  position:absolute;
+}
+
+
 
 
 

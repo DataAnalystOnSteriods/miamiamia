@@ -2,31 +2,101 @@
 <html>
 
 <head>
-    <audio controls autoplay>
-        <source src="New Home (Slowed).mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-      </audio>
-
     <link rel="stylesheet" href="frontpage-styles.css">
 
-    <div class="header" style="font-family: cursive;" >
-        <h1>Happy Birthday, my adiel!</h1>
-    </div>
+
+
+</head>
+
 <body>
-    
     <div class="content" style="font-family: cursive; font-size: larger;">
-        <b><p>.You may have thought that I forgot your birthday hahaha.
-            I have been thinking what to give for days, i dont have much, I dont even have the money to buy you
-            a boquet of flowers if you were here, i dont have much to offer really, aside from my forgetful mind and
-            a flower I plucked outside. You are an amazing person, and i've never been happier, you make me happy.
-        </p></b>
+        <header><h1>Hi, my valentine.</h1></header>
+        <p>Happy Valentine's Day, to the love of my life. Our relationship is filled with so much love and affection
+            because of you. There are no words that can describe how lucky I am to have you in my life. You complete me.
+            <b>May every petal that fall remind you of my unconditional love.</b>
+        </p>
         <br>
-        <b><p> 
-            I may not be the man you always wanted, sometimes i forget things, forget dates, or even forget what we talked about
-            minutes ago; im such a forgetful boyfriend, a boy you dont wanna be with. But, here we are. You sacrificed a lot for this
-            relationship. I made this one to celebrate your existence in my life, I am happy because you are alive, 
-            I love you. <b> are an amazing person with an exceptionally gifted mind and heart. </b>
-        </p></b>
+        <p>Sincerly, the love of your life.</p>
+    
     </div>
+
+    <canvas></canvas>
+    <script>
+        const canvas = document.querySelector('canvas')
+        canvas.width = window.innerWidth
+        canvas.height = window.innerHeight
+        const ctx = canvas.getContext('2d')
+
+        const TOTAL = 100
+        const petalArray = []
+
+        const petalImg = new Image()
+        petalImg.src = 'https://djjjk9bjm164h.cloudfront.net/petal.png'
+        petalImg.addEventListener('load', () => {
+        for (let i = 0; i < TOTAL; i++) {
+            petalArray.push(new Petal())
+        }
+        render()
+        })
+
+        function render() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
+        petalArray.forEach(petal => petal.animate())
+        window.requestAnimationFrame(render)
+        }
+
+        window.addEventListener('resize', () => {
+        canvas.width = window.innerWidth
+        canvas.height = window.innerHeight
+        })
+
+        let mouseX = 0
+        function touchHandler(e) {
+        mouseX = (e.clientX || e.touches[0].clientX) / window.innerWidth
+        }
+        window.addEventListener('mousemove', touchHandler)
+        window.addEventListener('touchmove', touchHandler)
+
+        // Petal class
+        class Petal {
+        constructor() {
+            this.x = Math.random() * canvas.width
+            this.y = (Math.random() * canvas.height * 2) - canvas.height
+            this.w = 25 + Math.random() * 15
+            this.h = 20 + Math.random() * 10
+            this.opacity = this.w / 40
+            this.flip = Math.random()
+
+            this.xSpeed = 1.5 + Math.random() * 2
+            this.ySpeed = 1 + Math.random() * 1
+            this.flipSpeed = Math.random() * 0.03
+        }
+
+        draw() {
+            if (this.y > canvas.height || this.x > canvas.width) {
+            this.x = -petalImg.width
+            this.y = (Math.random() * canvas.height * 2) - canvas.height
+            this.xSpeed = 1.5 + Math.random() * 2
+            this.ySpeed = 1 + Math.random() * 1
+            this.flip = Math.random()
+            }
+            ctx.globalAlpha = this.opacity
+            ctx.drawImage(
+            petalImg, 
+            this.x, 
+            this.y, 
+            this.w * (0.6 + (Math.abs(Math.cos(this.flip)) / 3)), 
+            this.h * (0.8 + (Math.abs(Math.sin(this.flip)) / 5))
+            )
+        }
+
+        animate() {
+            this.x += this.xSpeed + mouseX * 5
+            this.y += this.ySpeed + mouseX * 2
+            this.flip += this.flipSpeed
+            this.draw()
+        }
+        }
+    </script>
 </body>
 </html>
